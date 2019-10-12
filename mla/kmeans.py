@@ -9,7 +9,7 @@ import numpy as np
 from mla.base import BaseEstimator
 from mla.metrics.distance import euclidean_distance
 
-random.seed(1111)
+random.seed(1111) # this doesnt seem to be a popular seed, probably needst o change to 0 or 42 :)
 
 
 class KMeans(BaseEstimator):
@@ -26,10 +26,12 @@ class KMeans(BaseEstimator):
     K : int
         The number of clusters into which the dataset is partitioned.
     max_iters: int
-        The maximum iterations of assigning points to the nearest cluster.
+        The maximum iterations of assigning points to the nearest cluster, 
+        it serves as a stoppoing creteria if the assignments didn't converge.
         Short-circuited by the assignments converging on their own.
     init: str, default 'random'
-        The name of the method used to initialize the first clustering.
+        The name of the method used to initialize the first clustering. 
+        Available options are:
 
         'random' - Randomly select values from the dataset as the K centroids.
         '++' - Select a random first centroid from the dataset, then select
@@ -88,6 +90,7 @@ class KMeans(BaseEstimator):
         return predictions
 
     def _assign(self, centroids):
+        """Assign the points to their closest final cluster centroids."""
 
         for row in range(self.n_samples):
             for i, cluster in enumerate(self.clusters):
