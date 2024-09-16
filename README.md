@@ -6,7 +6,7 @@ This project is targeting people who want to learn internals of ml algorithms or
 The code is much easier to follow than the optimized libraries and easier to play with.  
 All algorithms are implemented in Python, using numpy, scipy and autograd.  
 
-### Implemented:
+### Implemented algorithms:
 * [Deep learning (MLP, CNN, RNN, LSTM)](mla/neuralnet)
 * [Linear regression, logistic regression](mla/linear_models.py)
 * [Random Forests](mla/ensemble/random_forest.py)
